@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Ticket | HelpDesk</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="container narrow page">
+    <a href="dashboard.html" class="back">← Dashboard</a>
+    <h1>Create Support Ticket</h1>
+    <p class="muted">Describe your problem and our routing system will assign it to an available agent.</p>
+
+    <form id="ticketForm" class="panel form-panel">
+      <label>Subject</label>
+      <input id="subject" required placeholder="Example: Unable to access my account">
+
+      <label>Description</label>
+      <textarea id="description" rows="7" required placeholder="Explain your issue..."></textarea>
+
+      <label>Category</label>
+      <select id="category">
+        <option>Technical</option>
+        <option>Billing</option>
+        <option>Account</option>
+        <option>General</option>
+      </select>
+
+      <label>Priority</label>
+      <select id="priority">
+        <option>LOW</option>
+        <option selected>MEDIUM</option>
+        <option>HIGH</option>
+        <option>URGENT</option>
+      </select>
+
+      <p id="error" class="error"></p>
+      <button class="btn btn-primary">Create Ticket</button>
+    </form>
+  </main>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/create-ticket.js"></script>
+</body>
+</html>

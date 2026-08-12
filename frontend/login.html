@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | HelpDesk</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+  <div class="auth-card">
+    <h1>HelpDesk+</h1>
+    <p class="muted">Sign in to your support workspace</p>
+    <form id="loginForm">
+      <label>Email</label>
+      <input id="email" type="email" value="customer@helpdesk.local" required>
+      <label>Password</label>
+      <input id="password" type="password" value="Customer@123" required>
+      <button class="btn btn-primary full">Sign In</button>
+      <p id="error" class="error"></p>
+    </form>
+    <div class="demo-box">
+      <b>Demo accounts</b><br>
+      Customer: customer@helpdesk.local / Customer@123<br>
+      Agent: agent@helpdesk.local / Agent@123<br>
+      Admin: admin@helpdesk.local / Admin@123
+    </div>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

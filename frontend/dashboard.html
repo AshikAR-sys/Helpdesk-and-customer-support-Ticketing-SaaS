@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | HelpDesk</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">HelpDesk<span>+</span></div>
+    <div class="top-actions">
+      <span id="userInfo"></span>
+      <button id="logoutBtn" class="btn btn-light">Logout</button>
+    </div>
+  </header>
+
+  <main class="container page">
+    <div class="page-heading">
+      <div><h1>Support Dashboard</h1><p class="muted">Monitor and manage your tickets.</p></div>
+      <a id="newTicketBtn" href="create-ticket.html" class="btn btn-primary">+ New Ticket</a>
+    </div>
+
+    <section class="stats">
+      <div class="stat"><span>Total</span><b id="total">0</b></div>
+      <div class="stat"><span>Open</span><b id="open">0</b></div>
+      <div class="stat"><span>In Progress</span><b id="progress">0</b></div>
+      <div class="stat"><span>Resolved</span><b id="resolved">0</b></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header"><h2>Tickets</h2></div>
+      <div id="tickets" class="ticket-list"></div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
