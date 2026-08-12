@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HelpDesk SaaS — Separated Full-Stack Project
 
 This version is intentionally separated into folders so it is easy to understand and present:
@@ -131,3 +132,7 @@ Future scalable components:
 - Email service
 - Load balancer
 - Monitoring
+=======
+# Helpdesk-and-customer-support-Ticketing-SaaS
+My capstone project with python 
+>>>>>>> e6fe3b2469ee63a976497366a79ced5c91f236a1
