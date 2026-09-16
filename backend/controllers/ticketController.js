@@ -43,8 +43,8 @@ async function listTickets(req, res) {
   const condition = req.user.role === "CUSTOMER"
     ? "t.creator_id = $1"
     : req.user.role === "AGENT"
-    ? "t.assignee_id = $1"
-    : "TRUE";
+      ? "t.assignee_id = $1"
+      : "TRUE";
 
   const result = await pool.query(
     `SELECT t.id, t.ticket_no, t.subject, t.category, t.priority, t.status,
@@ -134,15 +134,21 @@ async function updateStatus(req, res) {
 
   const result = await pool.query(
     `UPDATE tickets
-     SET status = $1,
-         resolved_at = CASE WHEN $1 IN ('RESOLVED','CLOSED') THEN NOW() ELSE NULL END,
+     SET status = $1::ticket_status,
+         resolved_at = CASE
+           WHEN $1::ticket_status IN ('RESOLVED'::ticket_status, 'CLOSED'::ticket_status)
+           THEN NOW()
+           ELSE NULL
+         END,
          updated_at = NOW()
      WHERE id = $2
      RETURNING *`,
     [status, req.params.id]
   );
 
-  if (!result.rows.length) return res.status(404).json({ message: "Ticket not found" });
+  if (!result.rows.length) {
+    return res.status(404).json({ message: "Ticket not found" });
+  }
 
   res.json(result.rows[0]);
 }
