@@ -1032,19 +1032,19 @@ function AdminTickets({
               All Priority
             </option>
 
-            <option value="LOW">
+            <option className="bg-slate-900 text-white" value="LOW">
               Low
             </option>
 
-            <option value="MEDIUM">
+            <option className="bg-slate-900 text-white" value="MEDIUM">
               Medium
             </option>
 
-            <option value="HIGH">
+            <option className="bg-slate-900 text-white" value="HIGH">
               High
             </option>
 
-            <option value="URGENT">
+            <option className="bg-slate-900 text-white" value="URGENT">
               Urgent
             </option>
           </select>
@@ -2233,7 +2233,7 @@ function CreateTicketModal({
     useState("");
 
   const [category, setCategory] =
-    useState("GENERAL");
+    useState("General");
 
   const [priority, setPriority] =
     useState("MEDIUM");
@@ -2282,17 +2282,17 @@ function CreateTicketModal({
   return (
     <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
 
-      <div className="w-full max-w-xl rounded-3xl border border-slate-700 bg-slate-900 p-6 text-white shadow-2xl">
+      <div className="w-full max-w-xl rounded-3xl border border-slate-700 bg-slate-900 p-6">
 
         <div className="flex items-center justify-between mb-6">
 
-          <h2 className="text-xl font-bold">
+          <h2 className="text-xl font-bold text-white">
             Create New Ticket
           </h2>
 
           <button
             onClick={onClose}
-            className="h-9 w-9 rounded-xl bg-slate-800 text-white hover:bg-slate-700 transition"
+            className="h-9 w-9 rounded-xl bg-slate-800 text-white hover:bg-slate-700"
           >
             ✕
           </button>
@@ -2309,7 +2309,7 @@ function CreateTicketModal({
               )
             }
             placeholder="Ticket subject"
-            className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+            className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500"
           />
 
           <textarea
@@ -2321,7 +2321,7 @@ function CreateTicketModal({
             }
             rows="5"
             placeholder="Describe your issue..."
-            className="w-full resize-none rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm outline-none focus:border-blue-500"
+            className="w-full resize-none rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none focus:border-blue-500"
           />
 
           <div className="grid grid-cols-2 gap-3">
@@ -2333,21 +2333,21 @@ function CreateTicketModal({
                   e.target.value
                 )
               }
-              className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none focus:border-blue-500"
             >
-              <option value="GENERAL">
+              <option className="bg-slate-900 text-white" value="General">
                 General
               </option>
 
-              <option value="TECHNICAL">
+              <option className="bg-slate-900 text-white" value="Technical">
                 Technical
               </option>
 
-              <option value="BILLING">
+              <option className="bg-slate-900 text-white" value="Billing">
                 Billing
               </option>
 
-              <option value="ACCOUNT">
+              <option className="bg-slate-900 text-white" value="Account">
                 Account
               </option>
             </select>
@@ -2359,21 +2359,21 @@ function CreateTicketModal({
                   e.target.value
                 )
               }
-              className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+              className="rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none focus:border-blue-500"
             >
-              <option value="LOW">
+              <option className="bg-slate-900 text-white" value="LOW">
                 Low
               </option>
 
-              <option value="MEDIUM">
+              <option className="bg-slate-900 text-white" value="MEDIUM">
                 Medium
               </option>
 
-              <option value="HIGH">
+              <option className="bg-slate-900 text-white" value="HIGH">
                 High
               </option>
 
-              <option value="URGENT">
+              <option className="bg-slate-900 text-white" value="URGENT">
                 Urgent
               </option>
             </select>
