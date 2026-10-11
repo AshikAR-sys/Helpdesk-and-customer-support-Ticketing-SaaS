@@ -1,11 +1,16 @@
+
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
-const API = "http://127.0.0.1:5000";
+const API = (
+  import.meta.env.VITE_API_URL ||
+  "http://127.0.0.1:5000"
+).replace(/\/+$/, "");
 
 const api = axios.create({
   baseURL: API,
 });
+
 
 /* =========================================================
    MAIN APP
@@ -1530,7 +1535,7 @@ function TicketModal({
   return (
     <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
 
-      <div className="w-full max-w-4xl max-h-[92vh] overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 shadow-2xl flex flex-col">
+      <div className="w-full max-w-4xl max-h-[92vh] overflow-hidden rounded-3xl border border-slate-700 bg-slate-900 text-slate-100 shadow-2xl flex flex-col">
 
         {/* HEADER */}
 
@@ -1547,7 +1552,7 @@ function TicketModal({
                 )}
             </p>
 
-            <h2 className="text-xl font-bold mt-1">
+            <h2 className="text-xl font-bold text-slate-100 mt-1">
               {ticket.subject ||
                 "Ticket Details"}
             </h2>
@@ -1621,7 +1626,7 @@ function TicketModal({
                 onClick={() =>
                   changeStatus("OPEN")
                 }
-                className="rounded-lg border border-slate-700 px-3 py-2 text-xs hover:bg-slate-800"
+                className="rounded-lg border border-slate-700 text-slate-100 px-3 py-2 text-xs hover:bg-slate-800"
               >
                 Open
               </button>
@@ -1657,7 +1662,7 @@ function TicketModal({
                     "CLOSED"
                   )
                 }
-                className="rounded-lg bg-slate-800 px-3 py-2 text-xs hover:bg-slate-700"
+                className="rounded-lg bg-slate-800 text-slate-100 px-3 py-2 text-xs hover:bg-slate-700"
               >
                 Close
               </button>
@@ -1686,7 +1691,7 @@ function TicketModal({
 
           <div>
 
-            <h3 className="font-semibold mb-4">
+            <h3 className="font-semibold text-slate-100 mb-4">
               Conversation
             </h3>
 
@@ -1779,7 +1784,7 @@ function TicketModal({
               }
               placeholder="Write a reply..."
               rows="2"
-              className="flex-1 resize-none rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm outline-none focus:border-blue-500"
+              className="flex-1 resize-none rounded-xl border border-slate-700 bg-slate-950 text-slate-100 placeholder-slate-500 px-4 py-3 text-sm outline-none focus:border-blue-500"
             />
 
             <button
@@ -2716,7 +2721,7 @@ function InfoBox({
         {label}
       </p>
 
-      <p className="text-sm font-medium mt-2 truncate">
+      <p className="text-sm font-medium text-slate-100 mt-2 truncate">
         {value}
       </p>
 
