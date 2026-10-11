@@ -350,11 +350,15 @@ def current_user():
 # =========================================================
 
 def find_agent(category, conn):
+    """
+    Prefer an available agent whose category matches the ticket.
+    If no matching agent exists, fall back to any available agent.
+    Among equally suitable agents, prefer the lowest active workload.
+    """
 
     cur = None
 
     try:
-
         cur = get_cursor(conn)
 
         cur.execute(
@@ -365,51 +369,38 @@ def find_agent(category, conn):
                 u.email AS agent_email,
                 u.category AS agent_category,
                 COUNT(t.id) AS active_tickets
-
             FROM users u
-
             LEFT JOIN tickets t
                 ON t.assignee_id = u.id
                 AND t.status IN (
                     'OPEN'::ticket_status,
                     'IN_PROGRESS'::ticket_status
                 )
-
             WHERE
                 u.role = 'AGENT'::user_role
                 AND u.is_available = TRUE
-                AND (
-                    u.category = %s
-                    OR u.category IS NULL
-                    OR u.category = 'General'
-                )
-
             GROUP BY
                 u.id,
                 u.name,
                 u.email,
                 u.category
-
             ORDER BY
                 CASE
                     WHEN u.category = %s THEN 0
                     WHEN u.category = 'General' THEN 1
-                    ELSE 2
+                    WHEN u.category IS NULL THEN 2
+                    ELSE 3
                 END,
-                COUNT(t.id) ASC
-
+                COUNT(t.id) ASC,
+                u.created_at ASC
             LIMIT 1
             """,
-            (
-                category,
-                category
-            )
+            (category,)
         )
 
         return cur.fetchone()
 
     finally:
-
         if cur:
             cur.close()
 
